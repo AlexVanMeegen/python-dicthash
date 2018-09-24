@@ -14,12 +14,7 @@ dictionary
 
 from future.builtins import str
 import hashlib
-import warnings
 FLOAT_FACTOR = 1e15
-FLOOR_SMALL_FLOATS = False
-
-# user warnings are printed to sys.stdout
-warnings.simplefilter('default', category=UserWarning)
 
 try:
     basestring  # attempt to evaluate basestring
@@ -44,8 +39,6 @@ def _save_convert_float_to_int(x):
                              'integer.')
         else:
             x = 0.
-            warnings.warn('Float too small for safe conversion to'
-                          'integer. Rounding down to zero.', UserWarning)
     return int(x * FLOAT_FACTOR)
 
 
